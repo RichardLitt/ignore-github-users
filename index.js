@@ -4,18 +4,20 @@ var octo = new Octokat({
 })
 var Promise = require('bluebird')
 
-module.exports = function openNotifications (amount) {
-  return Promise.resolve().then(function () {
+module.exports = function removeNotifications (user) {
+  return Promise.try(function () {
     return octo.notifications.fetch()
-  }).map(function (repo) {
-    // Get subject.url || https://developer.github.com/v3/activity/notifications/#list-your-notifications
-    // || https://api.github.com/repos/octokit/octokit.rb/issues/123
-    // Get json
-    // If user.long === offending_user || https://api.github.com/repos/ipfs/webui/pulls/193
-    // Mark as read, PATCH /notifications/threads/:id
-  }).then(function (notifications) {
-    console.log('notifications', notifications)
-    // console.log('Now opening %d notifications from %s/%s...', amount, organization, repository)
+  }).each(function (repo) {
+    var id = repo.id
+    return Promise.try(function () {
+      return octo.fromUrl(repo.subject.url).fetch()
+    }).then(function (notification) {
+      if (notification.user.login === user) {
+        return octo.notifications.threads(id).update()
+      }
+    }).catch(function (err) {
+      console.log(err)
+    })
   }).catch(function (err) {
     console.log(err)
   })

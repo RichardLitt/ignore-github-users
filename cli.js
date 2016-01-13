@@ -17,4 +17,4 @@ var cli = meow([
 	'  ponies & rainbows'
 ]);
 
-console.log(ignoreGithubUsers(cli.input[0] || 'unicorns'));
+ignoreGithubUsers(cli.input[0] || 'unicorns')

@@ -1,6 +1,6 @@
 # ignore-github-users [![Build Status](https://travis-ci.org/RichardLitt/ignore-github-users.svg?branch=master)](https://travis-ci.org/RichardLitt/ignore-github-users)
 
-> My super-duper module
+> Remove GitHub notifications from specific users
 
 
 ## Install
@@ -15,30 +15,20 @@ $ npm install --save ignore-github-users
 ```js
 const ignoreGithubUsers = require('ignore-github-users');
 
-ignoreGithubUsers('unicorns');
-//=> 'unicorns & rainbows'
+ignoreGithubUsers('greenkeeperio-bot');
+//=> 'Ignored greenkeeperio-bot'
 ```
 
 
 ## API
 
-### ignoreGithubUsers(input, [options])
+### ignoreGithubUsers(input)
 
 #### input
 
-Type: `string`
+Type: `string`, `array`
 
-Lorem ipsum.
-
-#### options
-
-##### foo
-
-Type: `boolean`  
-Default: `false`
-
-Lorem ipsum.
-
+The user or users to ignore.
 
 ## CLI
 
@@ -52,14 +42,9 @@ $ ignore-github-users --help
   Usage
     ignore-github-users [input]
 
-  Options
-    --foo  Lorem ipsum. [Default: false]
-
   Examples
-    $ ignore-github-users
-    unicorns & rainbows
-    $ ignore-github-users ponies
-    ponies & rainbows
+    $ ignore-github-users greenkeeperio-bot
+    Ignored greenkeeperio-bot
 ```
 
 

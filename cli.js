@@ -1,20 +1,14 @@
 #!/usr/bin/env node
-'use strict';
-var meow = require('meow');
-var ignoreGithubUsers = require('./');
+'use strict'
+var meow = require('meow')
+var ignoreGithubUsers = require('./')
 
 var cli = meow([
-	'Usage',
-	'  $ ignore-github-users [input]',
-	'',
-	'Options',
-	'  --foo  Lorem ipsum. [Default: false]',
-	'',
-	'Examples',
-	'  $ ignore-github-users',
-	'  unicorns & rainbows',
-	'  $ ignore-github-users ponies',
-	'  ponies & rainbows'
-]);
+  'Usage',
+  '  $ ignore-github-users [input]',
+  '',
+  'Examples',
+  '  $ ignore-github-users greenkeeperio-bot'
+])
 
-ignoreGithubUsers(cli.input[0] || 'unicorns')
+ignoreGithubUsers(cli.input[0])

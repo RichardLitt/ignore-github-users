@@ -1,7 +1,7 @@
 {
   "name": "ignore-github-users",
   "version": "0.0.0",
-  "description": "My super-duper module",
+  "description": "Remove GitHub notifications from users",
   "license": "MIT",
   "repository": "RichardLitt/ignore-github-users",
   "author": {
@@ -14,7 +14,7 @@
     "node": ">=0.10.0"
   },
   "scripts": {
-    "test": "xo && ava"
+    "lint": "standard"
   },
   "files": [
     "index.js",
@@ -27,14 +27,14 @@
   ],
   "dependencies": {
     "bluebird": "^3.1.1",
+    "isarray": "^1.0.0",
     "meow": "^3.6.0",
     "octokat": "^0.4.15"
   },
   "devDependencies": {
-    "ava": "^0.8.0",
-    "xo": "^0.12.1"
+    "standard": "^5.4.1"
   },
-  "xo": {
+  "standard": {
     "ignores": [
       "test.js"
     ]

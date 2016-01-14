@@ -3,8 +3,17 @@ var octo = new Octokat({
   token: process.env.GITHUB_OGN_TOKEN
 })
 var Promise = require('bluebird')
+var isArray = require('isarray')
 
 module.exports = function removeNotifications (user) {
+  if (typeof user !== 'string') {
+    if (!isArray(user)) {
+      throw new TypeError('Expected a string or an array')
+    }
+  } else {
+    user = [user]
+  }
+
   return Promise.try(function () {
     return octo.notifications.fetch()
   }).each(function (repo) {
@@ -12,9 +21,11 @@ module.exports = function removeNotifications (user) {
     return Promise.try(function () {
       return octo.fromUrl(repo.subject.url).fetch()
     }).then(function (notification) {
-      if (notification.user.login === user) {
+      if (user.indexOf(notification.user.login) > -1) {
         return octo.notifications.threads(id).update()
       }
+    }).then(function () {
+      console.log('Ignored ${user}')
     }).catch(function (err) {
       console.log(err)
     })

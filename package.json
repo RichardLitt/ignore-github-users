@@ -1,6 +1,6 @@
 {
   "name": "ignore-github-users",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Remove GitHub notifications from specific users",
   "license": "MIT",
   "repository": "RichardLitt/ignore-github-users",

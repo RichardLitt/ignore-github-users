@@ -1,7 +1,7 @@
 {
   "name": "ignore-github-users",
   "version": "0.0.0",
-  "description": "Remove GitHub notifications from users",
+  "description": "Remove GitHub notifications from specific users",
   "license": "MIT",
   "repository": "RichardLitt/ignore-github-users",
   "author": {
@@ -28,14 +28,14 @@
   "dependencies": {
     "bluebird": "^3.1.1",
     "isarray": "^1.0.0",
-    "meow": "^3.6.0",
-    "octokat": "^0.4.15"
+    "meow": "^3.7.0",
+    "octokat": "^0.4.16"
   },
   "devDependencies": {
     "standard": "^5.4.1"
   },
   "standard": {
-    "ignores": [
+    "ignore": [
       "test.js"
     ]
   }

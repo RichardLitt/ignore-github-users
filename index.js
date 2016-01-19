@@ -15,11 +15,7 @@ module.exports = function removeNotifications (user) {
   }
 
   return Promise.try(function () {
-    return octo.notifications.fetch(function (err, val) {
-      if (err) {
-        throw err
-      }
-    })
+    return octo.notifications.fetch()
   }).each(function (repo) {
     var id = repo.id
     return Promise.try(function () {
@@ -30,11 +26,11 @@ module.exports = function removeNotifications (user) {
       }
     }).then(function () {
       // Should only happen once
-      // console.log(`Ignored ${user}`)
+      return `Ignored ${user}`
     }).catch(function (err) {
       console.log(err)
     })
   }).catch(function (err) {
-    // console.log(err)
+    console.log(err)
   })
 }

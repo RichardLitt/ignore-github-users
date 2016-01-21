@@ -1,6 +1,6 @@
 {
   "name": "ignore-github-users",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Remove GitHub notifications from specific users",
   "license": "MIT",
   "repository": "RichardLitt/ignore-github-users",
@@ -44,7 +44,7 @@
     ]
   },
   "coordinates": [
-    78.22572521623725,
-    15.636601126135247
+    78.22581278747842,
+    15.638446485937493
   ]
 }

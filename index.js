@@ -1,11 +1,12 @@
 var Octokat = require('octokat')
-var octo = new Octokat({
-  token: process.env.GITHUB_OGN_TOKEN
-})
 var Promise = require('bluebird')
 var isArray = require('isarray')
 
-module.exports = function removeNotifications (user) {
+module.exports = function removeNotifications (user, flags, token) {
+  var octo = new Octokat({
+    token: token //|| process.env.GITHUB_OGN_TOKEN
+  })
+
   if (typeof user !== 'string') {
     if (!isArray(user)) {
       throw new TypeError('Expected a string or an array')

@@ -5,7 +5,7 @@ var ignoreGithubUsers = require('./')
 var Promise = require('bluebird')
 const ghauth = Promise.promisify(require('ghauth'))
 const authOptions = {
-  configName: 'ghauth',
+  configName: 'ignoreGithubUsers',
   note: 'Ignore GitHub notifications for a specific user',
   userAgent: 'ignoreGithubUsers',
   scopes: ['notifications']

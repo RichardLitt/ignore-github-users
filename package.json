@@ -30,6 +30,7 @@
   ],
   "dependencies": {
     "bluebird": "^3.1.1",
+    "depaginate": "0.0.8",
     "isarray": "^1.0.0",
     "meow": "^3.7.0",
     "octokat": "^0.4.16"

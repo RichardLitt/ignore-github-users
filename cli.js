@@ -15,5 +15,6 @@ var cli = meow([
 Promise.try(() => {
   return ignoreGithubUsers(cli.input[0])
 }).then((result) => {
+  console.log('result', result)
   console.log((result.length === 0) ? result : `No notifications from ${cli.input[0]}`)
 })

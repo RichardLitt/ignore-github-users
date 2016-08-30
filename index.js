@@ -4,6 +4,7 @@ var octo = new Octokat({
 })
 var Promise = require('bluebird')
 var isArray = require('isarray')
+var depaginate = require('depaginate')
 
 module.exports = function removeNotifications (user) {
   if (typeof user !== 'string') {
@@ -14,23 +15,18 @@ module.exports = function removeNotifications (user) {
     user = [user]
   }
 
-  return Promise.try(function () {
-    return octo.notifications.fetch()
-  }).each(function (repo) {
+  console.log('Hello')
+
+  return Promise.try(() => octo.notifications.fetch()) // depaginate((opts) => octo.notifications.fetch(), {}))
+  .each((repo) => {
     var id = repo.id
-    return Promise.try(function () {
-      return octo.fromUrl(repo.subject.url).fetch()
-    }).then(function (notification) {
-      if (user.indexOf(notification.user.login) > -1) {
-        return octo.notifications.threads(id).update()
-      }
-    }).then(function () {
+    return Promise.resolve(octo.fromUrl(repo.subject.url).fetch())
+      .then((notification) => {
+        if (user.indexOf(notification.user.login) > -1) {
+          return octo.notifications.threads(id).update()
+        }
+      })
       // Should only happen once
-      return `Ignored ${user}`
-    }).catch(function (err) {
-      console.log(err)
-    })
-  }).catch(function (err) {
-    console.log(err)
+      .then(() => `Ignored ${user}`)
   })
 }

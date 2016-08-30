@@ -1,6 +1,6 @@
 var Octokat = require('octokat')
 var octo = new Octokat({
-  token: process.env.GITHUB_OGN_TOKEN
+  token: process.env.IGNOREGITHUBNOTIFICATIONS
 })
 var Promise = require('bluebird')
 var isArray = require('isarray')

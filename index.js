@@ -19,9 +19,11 @@ module.exports = function removeNotifications (user) {
   }).each(function (repo) {
     var id = repo.id
     return Promise.try(function () {
+      console.log('fromUrl')
       return octo.fromUrl(repo.subject.url).fetch()
     }).then(function (notification) {
       if (user.indexOf(notification.user.login) > -1) {
+        console.log('notifications')
         return octo.notifications.threads(id).update()
       }
     }).then(function () {

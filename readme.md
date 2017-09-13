@@ -1,5 +1,7 @@
 # ignore-github-users [![Build Status](https://travis-ci.org/RichardLitt/ignore-github-users.svg?branch=master)](https://travis-ci.org/RichardLitt/ignore-github-users)
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/RichardLitt/ignore-github-users.svg)](https://greenkeeper.io/)
+
 > Remove GitHub notifications from specific users
 
 

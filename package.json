@@ -1,6 +1,6 @@
 {
   "name": "ignore-github-users",
-  "version": "0.0.2",
+  "version": "0.0.0-development",
   "description": "Remove GitHub notifications from specific users",
   "license": "MIT",
   "repository": "RichardLitt/ignore-github-users",
@@ -14,7 +14,8 @@
     "node": ">=0.10.0"
   },
   "scripts": {
-    "lint": "standard"
+    "lint": "standard",
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
   "files": [
     "index.js",
@@ -37,7 +38,8 @@
     "pify": "^3.0.0"
   },
   "devDependencies": {
-    "standard": "^10.0.3"
+    "standard": "^10.0.3",
+    "semantic-release": "^7.0.2"
   },
   "standard": {
     "ignore": [

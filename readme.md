@@ -47,6 +47,9 @@ $ ignore-github-users --help
     Ignored greenkeeperio-bot
 ```
 
+## Contribute
+
+Please do!
 
 ## License
 

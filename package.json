@@ -30,12 +30,14 @@
   ],
   "dependencies": {
     "bluebird": "^3.1.1",
-    "isarray": "^1.0.0",
+    "ghauth": "^3.2.1",
+    "isarray": "^2.0.2",
     "meow": "^3.7.0",
-    "octokat": "^0.4.16"
+    "octokat": "^0.9.2",
+    "pify": "^3.0.0"
   },
   "devDependencies": {
-    "standard": "^5.4.1"
+    "standard": "^10.0.3"
   },
   "standard": {
     "ignore": [

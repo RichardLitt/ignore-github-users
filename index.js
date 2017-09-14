@@ -1,24 +1,15 @@
 const Octokat = require('octokat')
 const Promise = require('bluebird')
-const isArray = require('isarray')
+const stringOrArrayToArray = require('./lib/helpers.js')
 
 module.exports = function (user, opts) {
+  user = stringOrArrayToArray(user)
   opts = opts || {}
-
-  if (typeof user !== 'string') {
-    if (!isArray(user)) {
-      throw new TypeError('Expected a string or an array')
-    }
-  } else {
-    user = [user]
-  }
-
+  var issueCounter = 0
   var octo = new Octokat({
     token: opts.token || process.env.GITHUB_TOKEN,
     rootURL: opts.enterprise
   })
-
-  var issueCounter = 0
 
   return Promise.resolve(octo.notifications.fetch())
     .then((res) => res.items)

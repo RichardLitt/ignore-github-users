@@ -1,6 +1,7 @@
 # ignore-github-users
 
 [![Build Status](https://travis-ci.org/RichardLitt/ignore-github-users.svg?branch=master)](https://travis-ci.org/RichardLitt/ignore-github-users)
+[![npm version](https://badge.fury.io/js/ignore-github-users.svg)](https://badge.fury.io/js/ignore-github-users)
 
 > Remove GitHub notifications from specific users
 

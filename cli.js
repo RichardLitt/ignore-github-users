@@ -12,10 +12,13 @@ const cli = meow([`
 
   Options
     -t, --token A token
-    -e, --enterprise A different GitHub enterprise endpoint
+    -e, --enterprise A different GitHub endpoint
 
   Examples
-    $ ignore-github-users greenkeeper
+    $ ignore-github-users greenkeeper[bot]
+    Ignored 3 issues with greenkeeper[bot].
+    $ ignore-github-users greenkeeper[bot]
+    No notifications from greenkeeper[bot].
 `], {
   alias: {
     t: 'token',

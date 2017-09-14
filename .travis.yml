@@ -1,5 +1,8 @@
 language: node_js
 node_js:
-  - 'stable'
-  - '0.12'
-  - '0.10'
+  - "node"
+before_install:
+- npm install -g npm@5
+- npm install -g greenkeeper-lockfile@1
+before_script: greenkeeper-lockfile-update
+after_script: greenkeeper-lockfile-upload

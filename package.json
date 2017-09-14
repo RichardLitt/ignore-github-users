@@ -15,7 +15,8 @@
   },
   "scripts": {
     "lint": "standard",
-    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post",
+    "test": "ava test.js"
   },
   "files": [
     "index.js",
@@ -38,8 +39,9 @@
     "pify": "^3.0.0"
   },
   "devDependencies": {
-    "standard": "^10.0.3",
-    "semantic-release": "^7.0.2"
+    "ava": "^0.22.0",
+    "semantic-release": "^7.0.2",
+    "standard": "^10.0.3"
   },
   "standard": {
     "ignore": [

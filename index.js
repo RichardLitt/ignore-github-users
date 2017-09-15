@@ -1,6 +1,7 @@
 const Octokat = require('octokat')
 const Promise = require('bluebird')
 const shimUser = require('stringorarraytoarray')
+const lib = require('./lib/index.js')
 
 module.exports = function (user, opts) {
   user = shimUser(user)
@@ -11,27 +12,33 @@ module.exports = function (user, opts) {
     rootURL: opts.enterprise
   })
 
-  return Promise.resolve(octo.notifications.fetch())
+  return Promise
+    .resolve(octo.notifications.fetch())
+    .catch(() => {
+      throw new Error('Unable to get notifications.')
+    })
     .then((res) => res.items)
     .each((notif) => {
-      // Grab the ID of the notification
-      var id = notif.id
       // Get the issue details
-      return Promise.resolve()
-        .then(() => octo.fromUrl(notif.subject.url).fetch())
-        // TODO Should be an each, I think
+      return lib.getNotification(octo, notif.subject.url)
         .then((notification) => {
           // This doesn't work as expected. This just checks if the user is in there, at all. Is that the goal?
-          // It _should_ check whether or not the user is mentionedin the new notification.
+          // It _should_ check wether or not the user is mentionedin the new notification.
           if (user.indexOf(notification.user.login) > -1) {
             issueCounter += 1
-            return octo.notifications.threads(id).update()
+            return octo.notifications.threads(notif.id).update()
           }
         })
-        .catch((err) => console.log(err))
+        .catch((err) => {
+          console.log(err)
+          throw new Error('Unable to update notification.')
+        })
     })
     .then(() => {
       return (issueCounter !== 0) ? `Ignored ${issueCounter} issues with ${user}.` : null
     })
-    .catch((err) => console.log(err))
+    .catch((err) => {
+      console.log(err)
+      throw new Error('Unable to ignore notifications.')
+    })
 }

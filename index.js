@@ -1,9 +1,9 @@
 const Octokat = require('octokat')
 const Promise = require('bluebird')
-const stringOrArrayToArray = require('./lib/helpers.js')
+const shimUser = require('stringorarraytoarray')
 
 module.exports = function (user, opts) {
-  user = stringOrArrayToArray(user)
+  user = shimUser(user)
   opts = opts || {}
   var issueCounter = 0
   var octo = new Octokat({

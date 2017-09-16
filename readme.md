@@ -1,5 +1,7 @@
 # ignore-github-users
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/RichardLitt/ignore-github-users.svg)](https://greenkeeper.io/)
+
 [![NPM](https://nodei.co/npm/ignore-github-users.png)](https://nodei.co/npm/ignore-github-users/)
 
 [![Build Status](https://travis-ci.org/RichardLitt/ignore-github-users.svg?branch=master)](https://travis-ci.org/RichardLitt/ignore-github-users)

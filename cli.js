@@ -6,7 +6,7 @@ const Promise = require('bluebird')
 const pify = require('pify')
 const ghauth = pify(require('ghauth'))
 
-const cli = meow([`
+const cli = meow(`
   Usage
     $ ignore-github-users <input> [opts]
 
@@ -19,10 +19,16 @@ const cli = meow([`
     Ignored 3 issues with greenkeeper[bot].
     $ ignore-github-users greenkeeper[bot]
     No notifications from greenkeeper[bot].
-`], {
-  alias: {
-    t: 'token',
-    e: 'enterprise'
+`, {
+  flags: {
+    'token': {
+      'type': 'string',
+      'alias': 't'
+    },
+    'enterprise': {
+      'type': 'boolean',
+      'alias': 'e'
+    }
   }
 })
 
@@ -53,6 +59,6 @@ Promise.resolve().then(() => {
   cli.flags.token = token
   return ignoreGithubUsers(cli.input[0], cli.flags)
 })
-.then((res) => {
-  console.log((res && res.length !== 0) ? res : `No notifications from ${cli.input[0]}.`)
-})
+  .then((res) => {
+    console.log((res && res.length !== 0) ? res : `No notifications from ${cli.input[0]}.`)
+  })

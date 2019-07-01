@@ -1,4 +1,4 @@
-const Octokat = require('octokat')
+const Octokit = require('@octokit/rest')
 const Promise = require('bluebird')
 const shimUser = require('stringorarraytoarray')
 const lib = require('./lib/index.js')
@@ -7,14 +7,16 @@ module.exports = function (user, opts) {
   user = shimUser(user)
   opts = opts || {}
   var issueCounter = 0
-  var octo = new Octokat({
-    token: opts.token || process.env.GITHUB_TOKEN,
+  var octo = new Octokit({
+    auth: opts.token || process.env.GITHUB_TOKEN,
+    userAgent: 'ignoreGitHubNotifications v0.0.1',
     rootURL: opts.enterprise
   })
 
   return Promise
-    .resolve(octo.notifications.fetch())
-    .catch(() => {
+    .resolve(octo.activity.getNotifications())
+    .catch((err) => {
+      console.log(err)
       throw new Error('Unable to get notifications.')
     })
     .then((res) => res.items)
@@ -30,7 +32,6 @@ module.exports = function (user, opts) {
           }
         })
         .catch((err) => {
-          console.log(err)
           throw new Error('Unable to update notification.')
         })
     })

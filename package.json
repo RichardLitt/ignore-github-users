@@ -33,7 +33,7 @@
   "dependencies": {
     "bluebird": "^3.1.1",
     "ghauth": "^3.2.1",
-    "meow": "^5.0.0",
+    "meow": "^6.1.0",
     "octokat": "^0.10.0",
     "pify": "^4.0.0",
     "stringorarraytoarray": "^1.0.1"
